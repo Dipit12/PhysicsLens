@@ -57,22 +57,23 @@ The frontend never talks to the agent directly — it only ever receives a valid
 `{ sceneType, params, explanation }` JSON object and renders it. This is the
 contract that keeps modules independent (see PLAN.md).
 
-## Repo structure (module boundaries — see PLAN.md for ownership)
+## Repo structure (module boundaries — one repo, four owned folders)
 
 ```
 /frontend          -- rendering engine, scene components, UI (Module 1)
 /backend           -- Strands agent, Lambda handlers, SAM template (Module 2)
-/infra             -- Cedar policies, OpenSearch setup, LocalStack config,
-                       scene template content/curriculum (Module 3)
-/shared            -- the scene spec JSON schema — the ONLY files all three
-                       modules may need to touch; edit via PR + notify others
-/docs              -- architecture notes, demo script
+/infra             -- Cedar policies, OpenSearch + LocalStack setup (Module 3)
+/content           -- curriculum content, PartyRock prompt prototyping,
+                       demo script + integration ownership (Module 4)
+/shared            -- the scene spec JSON schema and scene registry — the ONLY
+                       files all four modules may need to touch; edit via PR
+                       and notify the other three
 ```
 
 ## The scene spec contract (in `/shared/scene-spec.schema.json`)
 
-This is the interface between backend and frontend. Treat it as an API contract:
-changing it requires a heads-up to whoever owns the other side.
+This is the interface between backend, frontend, and content. Treat it as an API
+contract: changing it requires a heads-up to the other three modules.
 
 ```json
 {
@@ -90,13 +91,14 @@ changing it requires a heads-up to whoever owns the other side.
 
 - **Commits:** `[module] short description` (e.g. `[frontend] add pendulum scene renderer`)
 - **Branches:** `module/<name>/<feature>` (e.g. `frontend/priya/pendulum-scene`)
-- **New scene types:** adding one touches all three modules — coordinate before
-  starting, add it to `/shared/scene-registry.json` first so others know it's coming
+- **New scene types:** adding one touches all four modules — coordinate before
+  starting, add it to `/shared/scene-registry.json` first so everyone knows it's coming
 - **No new top-level dependencies** without a quick heads-up in the group chat —
   we're on a clock
-- **Every scene template needs:** a renderer (frontend), a Strands tool definition
-  (backend), and a curriculum explanation entry (infra/content) — incomplete
-  triads block the demo, flag early
+- **Every scene template needs a complete quad:** a renderer (frontend), a
+  Strands tool definition (backend), a Cedar role assignment + search index entry
+  (infra), and a curriculum explanation entry (content) — incomplete quads block
+  the demo, flag early
 
 ## Non-goals (v1)
 
