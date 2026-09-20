@@ -12,10 +12,10 @@ timeline, demo script).
 
 ## Status
 
-Repo skeleton only, as of this commit — structure, the shared contract, and
-per-module stubs are in place; no scene is fully wired end-to-end yet. All 6
-canonical scenes have their misconception + syllabus content drafted
-(`/content`); frontend/backend/infra all still need real implementations.
+Repo skeleton plus **Module 3 (infra) first deliverable**: Cedar lens-gating
+is demoable, and `infra/up.sh` brings up LocalStack + OpenSearch + scene
+retrieval. All 6 canonical scenes have misconception + syllabus content
+drafted (`/content`); frontend/backend still need real implementations.
 
 ## Repo structure
 
@@ -35,7 +35,7 @@ per PLAN.md.
 
 ```bash
 # infra (LocalStack + OpenSearch) — ship/start this first, everyone depends on it
-cd infra && docker-compose up
+cd infra && ./up.sh
 
 # frontend — renders from mock JSON, no backend needed yet
 cd frontend && npm install && npm run dev

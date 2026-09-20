@@ -3,8 +3,9 @@
 //   major   -> + formal
 //   teacher -> + authoring, all scenes unlocked
 //
-// Confirm this against the current Cedar policy syntax/CLI before wiring into
-// the Lambda authorizer (infra/README.md) -- this is a first-pass scaffold.
+// Default-deny: a request is allowed only if a permit matches and no forbid
+// matches. Sessions are members of PhysicsLens::Role::{"student","major","teacher"}.
+// Scope `in` takes a single entity UID (Cedar 4); role unions live in `when`.
 
 // Every session may view the intuition lens.
 permit (
@@ -17,16 +18,39 @@ permit (
 
 // Physics-major and teacher sessions may additionally view the formal lens.
 permit (
-  principal in [PhysicsLens::Role::"major", PhysicsLens::Role::"teacher"],
+  principal,
   action == PhysicsLens::Action::"viewLens",
   resource
 ) when {
-  resource.lens == "formal"
+  resource.lens == "formal" &&
+  (principal in PhysicsLens::Role::"major" ||
+   principal in PhysicsLens::Role::"teacher")
 };
 
-// Only teacher sessions may author POE prompts or unlock every scene.
-permit (
-  principal in [PhysicsLens::Role::"teacher"],
-  action in [PhysicsLens::Action::"authorPrompt", PhysicsLens::Action::"unlockAllScenes"],
+// Students are explicitly forbidden from the formal lens (demo-critical).
+forbid (
+  principal,
+  action == PhysicsLens::Action::"viewLens",
   resource
-);
+) when {
+  resource.lens == "formal" &&
+  principal in PhysicsLens::Role::"student"
+};
+
+// Only teacher sessions may author POE prompts.
+permit (
+  principal,
+  action == PhysicsLens::Action::"authorPrompt",
+  resource
+) when {
+  principal in PhysicsLens::Role::"teacher"
+};
+
+// Only teacher sessions may unlock every scene.
+permit (
+  principal,
+  action == PhysicsLens::Action::"unlockAllScenes",
+  resource
+) when {
+  principal in PhysicsLens::Role::"teacher"
+};

@@ -96,7 +96,7 @@ standalone before wiring in Cedar/OpenSearch.
   than light ball"}'` returns valid JSON carrying both the free-fall scene *and*
   the extracted (wrong) prediction, for ≥2 scenes
 
-### Module 3 — Auth, Search & Local Env (`/infra`)
+### Module 3 — Auth, Search & Local Env (`/infra`) ✅ completed
 Cedar, OpenSearch, and the LocalStack environment everyone runs against. Pure
 infra — no curriculum writing here (that's Module 4). Ship the local env first;
 the team is blocked without it.
@@ -107,9 +107,12 @@ the team is blocked without it.
   predictions; expose the semantic-retrieval endpoint the backend calls to narrow
   a query to candidate scenes
 - LocalStack + OpenSearch `docker-compose`, one-command up, documented
-- **First deliverable:** a `student` session is denied the formal lens while a
-  `major` session is allowed, demoable via a script; full local stack up with one
-  command for the whole team
+- **First deliverable (done):** a `student` session is denied the formal lens
+  while a `major` session is allowed (`infra/scripts/demo_lens_gating.py`);
+  `infra/up.sh` brings LocalStack + OpenSearch + `/retrieve` up in one command.
+  OpenSearch is seeded with all 6 canonical scenes (syllabus unit,
+  misconception tag, example predictions). Backend should call
+  `POST http://localhost:8081/retrieve`.
 
 ### Module 4 — Curriculum, Misconceptions & Integration (`/content`)
 The differentiator's substance, plus the glue role. Treat the writing as
@@ -165,7 +168,7 @@ just the scene — this is the schema change that makes POE work.
 **Day 1 afternoon — first deliverables**
 - M1: free-fall + pendulum render from mock JSON with ghost overlay
 - M2: agent returns valid scene + extracted prediction for 2 scenes
-- M3: Cedar denies student the formal lens; local env up for everyone
+- M3: Cedar denies student the formal lens; local env up for everyone ✅
 - M4: misconception + syllabus entries for 3 scenes; PartyRock prompt handed off
 - **Checkpoint (M4 runs it):** swap M1's mock for M2's real `/predict` response
 
@@ -187,7 +190,7 @@ just the scene — this is the schema change that makes POE work.
 ## Definition of done, per scene (the "quad")
 - [ ] Renders, with ghost overlay + working sliders, in both lenses (M1)
 - [ ] Agent extracts scenario + prediction across 5+ phrasings (M2)
-- [ ] Cedar lens-gating + OpenSearch index entry (M3)
+- [x] Cedar lens-gating + OpenSearch index entry (M3)
 - [ ] Named misconception + correct model + syllabus unit (M4)
 
 ## Demo script (draft — M4 refines)

@@ -1,0 +1,47 @@
+[
+  {
+    "uid": { "type": "PhysicsLens::Role", "id": "student" },
+    "attrs": {},
+    "parents": []
+  },
+  {
+    "uid": { "type": "PhysicsLens::Role", "id": "major" },
+    "attrs": {},
+    "parents": []
+  },
+  {
+    "uid": { "type": "PhysicsLens::Role", "id": "teacher" },
+    "attrs": {},
+    "parents": []
+  },
+  {
+    "uid": { "type": "PhysicsLens::Session", "id": "student-session" },
+    "attrs": {},
+    "parents": [{ "type": "PhysicsLens::Role", "id": "student" }]
+  },
+  {
+    "uid": { "type": "PhysicsLens::Session", "id": "major-session" },
+    "attrs": {},
+    "parents": [{ "type": "PhysicsLens::Role", "id": "major" }]
+  },
+  {
+    "uid": { "type": "PhysicsLens::Session", "id": "teacher-session" },
+    "attrs": {},
+    "parents": [{ "type": "PhysicsLens::Role", "id": "teacher" }]
+  },
+  {
+    "uid": { "type": "PhysicsLens::Lens", "id": "intuition" },
+    "attrs": { "lens": "intuition" },
+    "parents": []
+  },
+  {
+    "uid": { "type": "PhysicsLens::Lens", "id": "formal" },
+    "attrs": { "lens": "formal" },
+    "parents": []
+  },
+  {
+    "uid": { "type": "PhysicsLens::Lens", "id": "author" },
+    "attrs": { "lens": "author" },
+    "parents": []
+  }
+]
