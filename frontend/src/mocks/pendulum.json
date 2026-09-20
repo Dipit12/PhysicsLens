@@ -1,0 +1,15 @@
+{
+  "sceneType": "pendulum",
+  "params": { "length": 2.0, "angle": 45, "gravity": 9.8, "smallAngleApprox": true },
+  "prediction": {
+    "claim": "the heavier bob swings faster",
+    "expectedOutcome": "a heavier bob completes each swing in less time than a lighter one"
+  },
+  "explanation": {
+    "summary": "Mass cancels out of the small-angle period formula — a heavier bob swings at the same rate.",
+    "misconception": "A heavier pendulum bob swings faster than a lighter one.",
+    "correctModel": "For small angles, T = 2π√(L/g); mass does not appear.",
+    "syllabusUnit": "AP Physics 1 — Unit 6: Simple Harmonic Motion",
+    "equation": "T = 2\\pi\\sqrt{L/g}"
+  }
+}

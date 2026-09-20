@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://physicslens.dev/schema/scene-spec.schema.json",
+  "title": "PhysicsLens Scene Spec",
+  "description": "Contract between backend (Module 2), frontend (Module 1), and content (Module 4). This is the POE schema from PLAN.md — it carries the student's prediction alongside the real scene, not just the scene. Changing this file requires a heads-up to the other three modules (see CLAUDE.md conventions).",
+  "type": "object",
+  "required": ["sceneType", "params", "prediction", "explanation"],
+  "additionalProperties": false,
+  "properties": {
+    "sceneType": { "$ref": "#/$defs/sceneType" },
+    "params": { "type": "object" },
+    "prediction": { "$ref": "#/$defs/prediction" },
+    "explanation": { "$ref": "#/$defs/explanation" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "sceneType": { "const": "free-fall" } } },
+      "then": {
+        "properties": {
+          "params": {
+            "type": "object",
+            "required": ["massA", "massB", "dragEnabled"],
+            "additionalProperties": false,
+            "properties": {
+              "massA": { "type": "number", "exclusiveMinimum": 0 },
+              "massB": { "type": "number", "exclusiveMinimum": 0 },
+              "dragEnabled": { "type": "boolean" },
+              "heightMeters": { "type": "number", "exclusiveMinimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "sceneType": { "const": "projectile" } } },
+      "then": {
+        "properties": {
+          "params": {
+            "type": "object",
+            "required": ["initialSpeed", "launchAngleDeg", "dragEnabled"],
+            "additionalProperties": false,
+            "properties": {
+              "initialSpeed": { "type": "number", "exclusiveMinimum": 0 },
+              "launchAngleDeg": { "type": "number", "minimum": 0, "maximum": 90 },
+              "dragEnabled": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "sceneType": { "const": "pendulum" } } },
+      "then": {
+        "properties": {
+          "params": {
+            "type": "object",
+            "required": ["length", "angle", "gravity", "smallAngleApprox"],
+            "additionalProperties": false,
+            "properties": {
+              "length": { "type": "number", "exclusiveMinimum": 0 },
+              "angle": { "type": "number", "exclusiveMinimum": 0, "maximum": 180 },
+              "gravity": { "type": "number", "exclusiveMinimum": 0 },
+              "smallAngleApprox": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "sceneType": { "const": "circular-motion" } } },
+      "then": {
+        "properties": {
+          "params": {
+            "type": "object",
+            "required": ["radius", "angularVelocity"],
+            "additionalProperties": false,
+            "properties": {
+              "radius": { "type": "number", "exclusiveMinimum": 0 },
+              "angularVelocity": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "sceneType": { "const": "elastic-collision" } } },
+      "then": {
+        "properties": {
+          "params": {
+            "type": "object",
+            "required": ["massA", "velocityA", "massB", "velocityB"],
+            "additionalProperties": false,
+            "properties": {
+              "massA": { "type": "number", "exclusiveMinimum": 0 },
+              "velocityA": { "type": "number" },
+              "massB": { "type": "number", "exclusiveMinimum": 0 },
+              "velocityB": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "sceneType": { "const": "spring-shm" } } },
+      "then": {
+        "properties": {
+          "params": {
+            "type": "object",
+            "required": ["mass", "springConstant", "amplitude", "dampingCoefficient"],
+            "additionalProperties": false,
+            "properties": {
+              "mass": { "type": "number", "exclusiveMinimum": 0 },
+              "springConstant": { "type": "number", "exclusiveMinimum": 0 },
+              "amplitude": { "type": "number", "exclusiveMinimum": 0 },
+              "dampingCoefficient": { "type": "number", "minimum": 0 }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sceneType": {
+      "type": "string",
+      "description": "Must match an id in /shared/scene-registry.json.",
+      "enum": [
+        "free-fall",
+        "projectile",
+        "pendulum",
+        "circular-motion",
+        "elastic-collision",
+        "spring-shm"
+      ]
+    },
+    "prediction": {
+      "type": "object",
+      "description": "The student's belief, extracted from natural language (PLAN.md — this is the 'predict' half of predict–observe–explain).",
+      "required": ["claim", "expectedOutcome"],
+      "additionalProperties": false,
+      "properties": {
+        "claim": { "type": "string", "description": "The student's belief, in their own words." },
+        "expectedOutcome": { "type": "string", "description": "What the student's belief implies will happen, stated so the frontend can render it as the ghost." }
+      }
+    },
+    "explanation": {
+      "type": "object",
+      "required": ["misconception", "correctModel", "syllabusUnit", "equation"],
+      "additionalProperties": false,
+      "properties": {
+        "summary": { "type": "string", "description": "One-line plain-language callout shown in the intuition lens." },
+        "misconception": { "type": "string", "description": "The named misconception, grounded in the PER/FCI catalogue (see /content/misconceptions.json)." },
+        "correctModel": { "type": "string" },
+        "syllabusUnit": { "type": "string", "description": "Unit in the chosen syllabus (AP Physics 1 — see /content/syllabus-map.md)." },
+        "equation": { "type": "string", "description": "LaTeX, rendered via KaTeX in the frontend's formal lens." }
+      }
+    }
+  }
+}

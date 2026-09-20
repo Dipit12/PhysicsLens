@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  PhysicsLens backend — a single POST /predict endpoint wrapping the Strands
+  agent that turns a natural-language physics belief into a validated scene
+  spec (see /shared/scene-spec.schema.json). Runs against LocalStack for demo
+  reliability (CLAUDE.md: SAM CLI + LocalStack, load-bearing).
+
+Globals:
+  Function:
+    Timeout: 15
+    MemorySize: 512
+    Runtime: python3.12
+
+Resources:
+  PredictFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: app.handler
+      Events:
+        Predict:
+          Type: Api
+          Properties:
+            Path: /predict
+            Method: post
+
+Outputs:
+  PredictApi:
+    Description: "API Gateway endpoint for POST /predict"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/predict/"

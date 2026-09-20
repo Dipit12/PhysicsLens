@@ -1,0 +1,39 @@
+version: "3.8"
+
+# One-command local env for the whole team (CLAUDE.md, PLAN.md: "the team is
+# blocked without it" — ship this first). Brings up LocalStack (Lambda/API
+# Gateway for the backend) and a single-node OpenSearch (scene template +
+# query-history retrieval).
+#
+# OpenSearch's container bundles its own JVM, so Corretto isn't needed
+# locally unless you run OpenSearch outside Docker.
+
+services:
+  localstack:
+    image: localstack/localstack:3
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=lambda,apigateway,iam,sts,logs
+      - DEBUG=0
+    volumes:
+      - "./localstack-data:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - physicslens
+
+  opensearch:
+    image: opensearchproject/opensearch:2
+    environment:
+      - discovery.type=single-node
+      - plugins.security.disabled=true
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+      - "9600:9600"
+    networks:
+      - physicslens
+
+networks:
+  physicslens:
+    driver: bridge

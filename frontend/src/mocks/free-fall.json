@@ -1,0 +1,15 @@
+{
+  "sceneType": "free-fall",
+  "params": { "massA": 5.0, "massB": 0.1, "dragEnabled": false },
+  "prediction": {
+    "claim": "heavier object lands first",
+    "expectedOutcome": "massA reaches ground before massB"
+  },
+  "explanation": {
+    "summary": "Two masses released together from rest land at the same time in vacuum.",
+    "misconception": "Heavier objects fall faster.",
+    "correctModel": "In vacuum, all masses fall at the same rate.",
+    "syllabusUnit": "AP Physics 1 — Unit 1: Kinematics",
+    "equation": "d = \\tfrac{1}{2} g t^2"
+  }
+}
