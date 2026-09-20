@@ -117,5 +117,7 @@ sam build && sam local start-api --docker-network localstack
 npm run dev
 
 # Infra (from /infra)
-docker-compose up  # LocalStack + OpenSearch
+./up.sh            # LocalStack + OpenSearch + retrieve (one command)
+# Cedar demo: python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
+#             .venv/bin/python scripts/demo_lens_gating.py
 ```

@@ -7,7 +7,7 @@
       "misconceptionTag": "heavier-falls-faster",
       "syllabusUnit": "AP Physics 1 — Unit 1: Kinematics",
       "formalDepthLayer": "air resistance on/off, terminal velocity",
-      "quad": { "frontend": "not-started", "backend": "not-started", "infra": "not-started", "content": "drafted" }
+      "quad": { "frontend": "not-started", "backend": "not-started", "infra": "indexed", "content": "drafted" }
     },
     {
       "id": "projectile",
@@ -15,7 +15,7 @@
       "misconceptionTag": "velocity-zero-at-apex",
       "syllabusUnit": "AP Physics 1 — Unit 3: Two-Dimensional Motion",
       "formalDepthLayer": "drag → no closed form, numerical vs ideal",
-      "quad": { "frontend": "not-started", "backend": "not-started", "infra": "not-started", "content": "drafted" }
+      "quad": { "frontend": "not-started", "backend": "not-started", "infra": "indexed", "content": "drafted" }
     },
     {
       "id": "pendulum",
@@ -23,7 +23,7 @@
       "misconceptionTag": "heavier-bob-swings-faster",
       "syllabusUnit": "AP Physics 1 — Unit 6: Simple Harmonic Motion",
       "formalDepthLayer": "small-angle approx on/off, phase portrait, period–amplitude",
-      "quad": { "frontend": "not-started", "backend": "not-started", "infra": "not-started", "content": "drafted" }
+      "quad": { "frontend": "not-started", "backend": "not-started", "infra": "indexed", "content": "drafted" }
     },
     {
       "id": "circular-motion",
@@ -31,7 +31,7 @@
       "misconceptionTag": "outward-centrifugal-force",
       "syllabusUnit": "AP Physics 1 — Unit 5: Circular Motion and Gravitation",
       "formalDepthLayer": "centripetal vs centrifugal frames",
-      "quad": { "frontend": "not-started", "backend": "not-started", "infra": "not-started", "content": "drafted" }
+      "quad": { "frontend": "not-started", "backend": "not-started", "infra": "indexed", "content": "drafted" }
     },
     {
       "id": "elastic-collision",
@@ -39,7 +39,7 @@
       "misconceptionTag": "heavier-always-wins",
       "syllabusUnit": "AP Physics 1 — Unit 4: Momentum",
       "formalDepthLayer": "momentum vs KE, centre-of-mass frame",
-      "quad": { "frontend": "not-started", "backend": "not-started", "infra": "not-started", "content": "drafted" }
+      "quad": { "frontend": "not-started", "backend": "not-started", "infra": "indexed", "content": "drafted" }
     },
     {
       "id": "spring-shm",
@@ -47,7 +47,7 @@
       "misconceptionTag": "energy-gets-used-up",
       "syllabusUnit": "AP Physics 1 — Unit 6: Simple Harmonic Motion",
       "formalDepthLayer": "phase-space ellipse, damping regimes",
-      "quad": { "frontend": "not-started", "backend": "not-started", "infra": "not-started", "content": "drafted" }
+      "quad": { "frontend": "not-started", "backend": "not-started", "infra": "indexed", "content": "drafted" }
     }
   ]
 }

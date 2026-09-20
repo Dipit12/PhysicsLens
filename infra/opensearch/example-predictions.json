@@ -1,0 +1,39 @@
+{
+  "$comment": "Search paraphrases for OpenSearch retrieval — not curriculum. Module 4 owns the named misconception text in /content; this file only lists example student predictions so a NL query can be narrowed to candidate scenes.",
+  "free-fall": [
+    "a heavier ball falls faster than a light one",
+    "heavy objects hit the ground first",
+    "the 5 kg mass lands before the 100 g mass",
+    "feathers fall slower because they are lighter"
+  ],
+  "projectile": [
+    "velocity is zero at the top of the arc",
+    "the ball stops at the highest point",
+    "force points along the path of the projectile",
+    "nothing is acting on it at the top"
+  ],
+  "pendulum": [
+    "a heavier bob swings faster",
+    "heavier pendulum has a shorter period",
+    "mass changes how fast it swings",
+    "replace the bob with a heavier one and it will go quicker"
+  ],
+  "circular-motion": [
+    "there is an outward force in a circle",
+    "centrifugal force pushes you out of the turn",
+    "you feel a force away from the center",
+    "something pushes the passenger outward"
+  ],
+  "elastic-collision": [
+    "the heavier object always wins a collision",
+    "the big ball keeps going and the small one bounces back",
+    "mass alone decides who moves forward",
+    "a heavier cart always knocks the lighter one away"
+  ],
+  "spring-shm": [
+    "energy gets used up as the spring oscillates",
+    "the spring slows down because motion uses energy",
+    "oscillating consumes the energy",
+    "it stops because the energy runs out"
+  ]
+}

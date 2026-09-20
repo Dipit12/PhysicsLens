@@ -1,13 +1,18 @@
 {
-  "$comment": "Cedar entity schema for lens-gating (PLAN.md: 'same query, three depths, authorization deciding what you get'). Confirm syntax against current Cedar docs before wiring into the Lambda authorizer — Cedar's schema format has evolved across versions.",
   "PhysicsLens": {
     "entityTypes": {
       "Role": {
-        "shape": { "type": "Record", "attributes": {} }
+        "shape": {
+          "type": "Record",
+          "attributes": {}
+        }
       },
       "Session": {
         "memberOfTypes": ["Role"],
-        "shape": { "type": "Record", "attributes": {} }
+        "shape": {
+          "type": "Record",
+          "attributes": {}
+        }
       },
       "Lens": {
         "shape": {
@@ -22,19 +27,22 @@
       "viewLens": {
         "appliesTo": {
           "principalTypes": ["Session"],
-          "resourceTypes": ["Lens"]
+          "resourceTypes": ["Lens"],
+          "context": { "type": "Record", "attributes": {} }
         }
       },
       "authorPrompt": {
         "appliesTo": {
           "principalTypes": ["Session"],
-          "resourceTypes": ["Lens"]
+          "resourceTypes": ["Lens"],
+          "context": { "type": "Record", "attributes": {} }
         }
       },
       "unlockAllScenes": {
         "appliesTo": {
           "principalTypes": ["Session"],
-          "resourceTypes": ["Lens"]
+          "resourceTypes": ["Lens"],
+          "context": { "type": "Record", "attributes": {} }
         }
       }
     }
