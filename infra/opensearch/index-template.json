@@ -1,0 +1,16 @@
+{
+  "$comment": "Mapping for the scene-template retrieval index (PLAN.md: index each scene by syllabus unit, misconception tag, and example predictions). Load one document per scene in /shared/scene-registry.json, enriched with /content/misconceptions.json.",
+  "index_patterns": ["physicslens-scenes"],
+  "template": {
+    "mappings": {
+      "properties": {
+        "sceneType": { "type": "keyword" },
+        "displayName": { "type": "text" },
+        "misconceptionTag": { "type": "keyword" },
+        "syllabusUnit": { "type": "keyword" },
+        "misconception": { "type": "text" },
+        "examplePredictions": { "type": "text" }
+      }
+    }
+  }
+}

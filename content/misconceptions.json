@@ -1,0 +1,65 @@
+{
+  "$comment": "Module 4's misconception catalogue. Feeds Module 2 (agent prompt context + explanation payload) and Module 3 (OpenSearch metadata). sceneType values match /shared/scene-registry.json.",
+  "scenes": [
+    {
+      "sceneType": "free-fall",
+      "explanation": {
+        "summary": "Two masses released together from rest land at the same time in vacuum; air resistance is what makes real-world drops look mass-dependent.",
+        "misconception": "A heavier object falls faster than a lighter one dropped from the same height.",
+        "correctModel": "In the absence of air resistance, all objects near Earth's surface accelerate downward at the same rate, g ≈ 9.8 m/s², regardless of mass — gravitational force and inertial mass scale together, so mass cancels out of the acceleration.",
+        "syllabusUnit": "AP Physics 1 — Unit 1: Kinematics",
+        "equation": "d = \\tfrac{1}{2} g t^2"
+      }
+    },
+    {
+      "sceneType": "projectile",
+      "explanation": {
+        "summary": "At the top of the arc, vertical velocity is momentarily zero — but horizontal velocity and downward acceleration never stop.",
+        "misconception": "Velocity is zero at the top of a projectile's flight, and/or the force keeps acting along the direction of motion.",
+        "correctModel": "At the apex only the vertical velocity component is zero; horizontal velocity is unchanged throughout, and the only force (ignoring drag) is gravity, acting straight down the whole time — not along the trajectory.",
+        "syllabusUnit": "AP Physics 1 — Unit 3: Two-Dimensional Motion",
+        "equation": "y(t) = v_0 \\sin\\theta \\, t - \\tfrac{1}{2} g t^2"
+      }
+    },
+    {
+      "sceneType": "pendulum",
+      "explanation": {
+        "summary": "Swap the bob for a heavier one at the same length and the period doesn't change — mass cancels out of the small-angle period formula.",
+        "misconception": "A heavier pendulum bob swings faster (has a shorter period) than a lighter one.",
+        "correctModel": "For small angles, period depends only on length and gravity: T = 2π√(L/g). Mass cancels because both the restoring force and the inertia it must accelerate scale together with mass.",
+        "syllabusUnit": "AP Physics 1 — Unit 6: Simple Harmonic Motion",
+        "equation": "T = 2\\pi\\sqrt{L/g}"
+      }
+    },
+    {
+      "sceneType": "circular-motion",
+      "explanation": {
+        "summary": "There's no real outward push — only an inward pull toward the center. What feels like an outward force is your own frame lying to you.",
+        "misconception": "An object moving in a circle feels an outward (centrifugal) force pushing it away from the center.",
+        "correctModel": "The only real net force is centripetal — directed toward the center — and it's what bends the path into a circle. The 'outward force' is fictitious, appearing only when you analyze motion from the rotating object's own non-inertial frame.",
+        "syllabusUnit": "AP Physics 1 — Unit 5: Circular Motion and Gravitation",
+        "equation": "F_c = \\dfrac{m v^2}{r}"
+      }
+    },
+    {
+      "sceneType": "elastic-collision",
+      "explanation": {
+        "summary": "Equal masses can fully swap velocities; a light object hitting a much heavier one can bounce straight back. Mass alone doesn't decide the outcome.",
+        "misconception": "In a collision, the heavier object always keeps moving forward while the lighter one just bounces off.",
+        "correctModel": "The outcome is set by the mass ratio together with the two conserved quantities — momentum always, kinetic energy for an elastic collision — not by mass alone.",
+        "syllabusUnit": "AP Physics 1 — Unit 4: Momentum",
+        "equation": "v_1' = \\dfrac{(m_1-m_2)v_1 + 2m_2v_2}{m_1+m_2}"
+      }
+    },
+    {
+      "sceneType": "spring-shm",
+      "explanation": {
+        "summary": "Watch the energy bars: kinetic and elastic potential trade back and forth but their sum stays flat — nothing is 'used up' by oscillating.",
+        "misconception": "The energy in an oscillating spring gets used up as it swings, which is why it eventually slows down.",
+        "correctModel": "In an ideal, undamped spring-mass system total mechanical energy is conserved and continuously trades between kinetic and elastic potential energy. Real systems slow down because damping (friction, air resistance) drains energy out — oscillation itself doesn't consume it.",
+        "syllabusUnit": "AP Physics 1 — Unit 6: Simple Harmonic Motion",
+        "equation": "E = \\tfrac{1}{2} k x^2 + \\tfrac{1}{2} m v^2"
+      }
+    }
+  ]
+}
